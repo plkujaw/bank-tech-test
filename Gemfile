@@ -4,4 +4,5 @@ source 'https://rubygems.org' do
   gem 'rspec'
   gem 'rubocop'
   gem 'simplecov'
+  gem 'simplecov-console'
 end
