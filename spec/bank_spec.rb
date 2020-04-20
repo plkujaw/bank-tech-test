@@ -2,15 +2,18 @@
 
 require 'bank'
 
-describe Bank do
-  subject(:bank) { described_class.new }
+describe Account do
+  subject(:account) { described_class.new }
+  it 'has a opening balance of 0' do
+    expect(account.balance).to eq(0)
+  end
   it 'can accept deposits' do
-    expect { bank.deposit(1000) }.not_to raise_error
+    expect { account.deposit(1000) }.not_to raise_error
   end
   it 'can accept withdrawals' do
-    expect { bank.withdraw(1000) }.not_to raise_error
+    expect { account.withdraw(1000) }.not_to raise_error
   end
   it 'can print a statement' do
-    expect { bank.statement }.not_to raise_error
+    expect { account.statement }.not_to raise_error
   end
 end
