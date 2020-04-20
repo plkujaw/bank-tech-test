@@ -4,8 +4,7 @@ require 'bank'
 
 describe Account do
   subject(:account) { described_class.new }
-  date = Date.today.to_s
-  it 'has a opening balance of 0' do
+  it 'has an opening balance of 0' do
     expect(account.balance).to eq(0)
   end
   it 'can accept deposits' do
@@ -22,8 +21,10 @@ describe Account do
     it 'adds amount to the account balance' do
       account.deposit(1000)
       expect(account.balance).to eq(1000)
-      account.deposit(500)
-      expect(account.balance).to eq(1500)
+    end
+    it 'stores an operation in transaction history' do
+      deposit = account.deposit(1000)
+      expect(account.history).to include(*deposit)
     end
   end
 
@@ -32,8 +33,10 @@ describe Account do
       account.deposit(1000)
       account.withdraw(500)
       expect(account.balance).to eq(500)
-      account.withdraw(200)
-      expect(account.balance).to eq(300)
+    end
+    it 'stores an operation in transaction history' do
+      withdraw = account.withdraw(1000)
+      expect(account.history).to include(*withdraw)
     end
   end
 end
