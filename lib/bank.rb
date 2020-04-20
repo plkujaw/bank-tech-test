@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 class Account
   attr_reader :balance
 
@@ -11,10 +13,12 @@ class Account
 
   def deposit(amount)
     @balance += amount
+    date = Date.today
   end
 
   def withdraw(amount)
-    # code
+    @balance -= amount
+    date = Date.today
   end
 
   def print_statement
