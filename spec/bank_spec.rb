@@ -14,6 +14,15 @@ describe Account do
     expect { account.withdraw(1000) }.not_to raise_error
   end
   it 'can print a statement' do
-    expect { account.statement }.not_to raise_error
+    expect { account.print_statement }.not_to raise_error
+  end
+
+  describe '#deposit' do
+    it 'adds amount to the account balance' do
+      account.deposit(1000)
+      expect(account.balance).to eq(1000)
+      account.deposit(500)
+      expect(account.balance).to eq(1500)
+    end
   end
 end

@@ -10,14 +10,14 @@ class Account
   end
 
   def deposit(amount)
-    # code
+    @balance += amount
   end
 
   def withdraw(amount)
     # code
   end
 
-  def statement
+  def print_statement
     # code
   end
 end
