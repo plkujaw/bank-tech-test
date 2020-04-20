@@ -6,10 +6,8 @@ require 'date'
 class Account
   attr_reader :balance, :history
 
-  OPENING_BALANCE = 0
-
-  def initialize(balance = OPENING_BALANCE)
-    @balance = balance
+  def initialize
+    @balance = 0
     @history = []
   end
 
@@ -21,9 +19,7 @@ class Account
 
   def withdraw(amount)
     @balance -= amount
-    date = Date.today.to_s
-    type = 'withdraw'
-    withdrawal = [date, type, amount, @balance]
+    withdrawal = Transaction.new('withdrawal', amount, @balance)
     @history << withdrawal
   end
 

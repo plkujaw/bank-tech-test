@@ -6,7 +6,7 @@ describe Account do
   subject(:account) { described_class.new }
   date = Date.today.to_s
   it 'has a opening balance of 0' do
-    expect(account.balance).to eq(Account::OPENING_BALANCE)
+    expect(account.balance).to eq(0)
   end
   it 'can accept deposits' do
     expect { account.deposit(1000) }.not_to raise_error
