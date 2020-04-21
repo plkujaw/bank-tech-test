@@ -22,21 +22,13 @@ describe Account do
       account.deposit(1000)
       expect(account.balance).to eq(1000)
     end
-    it 'stores an operation in transaction history' do
-      deposit = account.deposit(1000)
-      expect(account.history).to include(*deposit)
-    end
   end
 
-  describe '#withdrawal' do
+  describe '#withdraw' do
     it 'deducts amount from the account balance' do
       account.deposit(1000)
       account.withdraw(500)
       expect(account.balance).to eq(500)
-    end
-    it 'stores an operation in transaction history' do
-      withdraw = account.withdraw(1000)
-      expect(account.history).to include(*withdraw)
     end
   end
 end
