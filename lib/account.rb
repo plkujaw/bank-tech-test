@@ -5,7 +5,7 @@ require_relative 'transaction_history'
 require 'date'
 
 class Account
-  attr_reader :balance, :transaction_history
+  attr_reader :balance
 
   def initialize(transaction_history = TransactionHistory.new)
     @balance = 0
@@ -14,17 +14,17 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    deposit = Transaction.new('deposit', amount)
+    deposit = Transaction.new('deposit', amount, @balance)
     @transaction_history.add_to_history(deposit)
   end
 
   def withdraw(amount)
     @balance -= amount
-    withdrawal = Transaction.new('withdrawal', amount)
+    withdrawal = Transaction.new('withdrawal', amount, @balance)
     @transaction_history.add_to_history(withdrawal)
   end
 
   def print_statement
-    # code
+    @transaction_history.history[0]
   end
 end

@@ -31,4 +31,18 @@ describe Account do
       expect(account.balance).to eq(500)
     end
   end
+
+  describe '#print_statement' do
+    it 'prints the statement' do
+      account.deposit(1000)
+      account.deposit(2000)
+      account.withdraw(500)
+      expect(account.print_statement).to eq(
+        'date || credit || debit || balance
+        21/04/2020 || || 500.00 || 2500.00
+        21/04/2020 || 2000.00 || || 3000.00
+        21/04/2020 || 1000.00 || || 1000.00'
+      )
+    end
+  end
 end

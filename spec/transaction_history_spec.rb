@@ -7,9 +7,12 @@ describe TransactionHistory do
   describe '#add_to_history' do
     it 'adds transactions to history' do
       date = Date.today
-      transaction = Transaction.new(date, 'deposit', 1000)
-      transaction_history.add_to_history(transaction)
-      expect(transaction_history.history).to include(transaction)
+      deposit = Transaction.new(date, 'deposit', 1000, 1000)
+      withdrawal = Transaction.new(date, 'withdrawal', 500, 500)
+      transaction_history.add_to_history(deposit)
+      transaction_history.add_to_history(withdrawal)
+      expect(transaction_history.history.first).to eq(deposit)
+      expect(transaction_history.history.last).to eq(withdrawal)
     end
   end
 end
