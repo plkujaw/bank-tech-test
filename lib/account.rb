@@ -25,6 +25,9 @@ class Account
   end
 
   def print_statement
-    @transaction_history.history[0]
+    puts 'date || credit || debit || balance'
+    # @transaction_history.history.reverse.each do |transaction|
+    #   puts transaction.date.to_s
+    # end
   end
 end

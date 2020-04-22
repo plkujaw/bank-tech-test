@@ -34,15 +34,13 @@ describe Account do
 
   describe '#print_statement' do
     it 'prints the statement' do
-      account.deposit(1000)
-      account.deposit(2000)
-      account.withdraw(500)
-      expect(account.print_statement).to eq(
-        'date || credit || debit || balance
-        21/04/2020 || || 500.00 || 2500.00
-        21/04/2020 || 2000.00 || || 3000.00
-        21/04/2020 || 1000.00 || || 1000.00'
-      )
+      date = Date.today.to_s
+      transaction_history = TransactionHistory.new
+      deposit = Transaction.new(date, 'deposit', 1000, 1000)
+      withdrawal = Transaction.new(date, 'withdrawal', 500, 500)
+      transaction_history.add_to_history(deposit)
+      transaction_history.add_to_history(withdrawal)
+      expect { account.print_statement }.to output("date || credit || debit || balance\n").to_stdout
     end
   end
 end
