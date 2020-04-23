@@ -42,7 +42,7 @@ describe Account do
       account.transaction_history.add_to_history(deposit2)
       account.transaction_history.add_to_history(withdrawal)
       expect { account.print_statement }.to output(
-        "date || credit || debit || balance\n#{withdrawal.date} || || 100.00 || 500.00\n#{withdrawal.date} || 400.00 || || 600.00\n#{withdrawal.date} || 200.00 || || 200.00\n"
+        "date || credit || debit || balance\n#{deposit1.date} || || 100.00 || 500.00\n#{deposit2.date} || 400.00 || || 600.00\n#{withdrawal.date} || 200.00 || || 200.00\n"
       ).to_stdout
     end
   end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 class Transaction
   attr_reader :date, :type, :amount, :balance
 
