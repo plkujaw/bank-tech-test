@@ -28,9 +28,9 @@ class Account
     puts 'date || credit || debit || balance'
     @transaction_history.history.reverse.each do |transaction|
       if transaction.type == 'deposit'
-        puts "#{transaction.date} || #{transaction.amount} || || #{transaction.balance}"
+        puts transaction.date.to_s + ' || ' + format('%.2f', transaction.amount) + ' || || ' + format('%.2f', transaction.balance)
       else
-        puts "#{transaction.date} || || #{transaction.amount} || #{transaction.balance}"
+        puts transaction.date.to_s + ' || || ' + format('%.2f', transaction.amount) + ' || ' + format('%.2f', transaction.balance)
       end
     end
   end
