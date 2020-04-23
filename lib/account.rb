@@ -5,11 +5,11 @@ require_relative 'transaction_history'
 require 'date'
 
 class Account
-  attr_reader :balance
+  attr_reader :balance, :transaction_history
 
-  def initialize(transaction_history = TransactionHistory.new)
+  def initialize
     @balance = 0
-    @transaction_history = transaction_history
+    @transaction_history = TransactionHistory.new
   end
 
   def deposit(amount)
@@ -26,8 +26,12 @@ class Account
 
   def print_statement
     puts 'date || credit || debit || balance'
-    # @transaction_history.history.reverse.each do |transaction|
-    #   puts transaction.date.to_s
-    # end
+    @transaction_history.history.reverse.each do |transaction|
+      if transaction.type == 'deposit'
+        puts "#{transaction.date} || #{transaction.amount} || || #{transaction.balance}"
+      else
+        puts "#{transaction.date} || || #{transaction.amount} || #{transaction.balance}"
+      end
+    end
   end
 end

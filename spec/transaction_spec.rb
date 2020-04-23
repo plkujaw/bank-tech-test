@@ -4,7 +4,7 @@ require 'transaction'
 
 describe Transaction do
   it 'creates a deposit transaction' do
-    date = Date.today.to_s
+    date = Date.today
     transaction = Transaction.new(date, 'deposit', 500, 500)
     expect(transaction.date).to eq(date)
     expect(transaction.type).to eq('deposit')
@@ -13,7 +13,7 @@ describe Transaction do
   end
 
   it 'creates a withdrawal transaction' do
-    date = Date.today.to_s
+    date = Date.today
     transaction = Transaction.new(date, 'withdrawal', 500, 0)
     expect(transaction.date).to eq(date)
     expect(transaction.type).to eq('withdrawal')

@@ -4,18 +4,18 @@ require 'account'
 
 describe Account do
   subject(:account) { described_class.new }
-  it 'has an opening balance of 0' do
-    expect(account.balance).to eq(0)
-  end
-  it 'can accept deposits' do
-    expect { account.deposit(1000) }.not_to raise_error
-  end
-  it 'can accept withdrawals' do
-    expect { account.withdraw(1000) }.not_to raise_error
-  end
-  it 'can print a statement' do
-    expect { account.print_statement }.not_to raise_error
-  end
+  # it 'has an opening balance of 0' do
+  #   expect(account.balance).to eq(0)
+  # end
+  # it 'can accept deposits' do
+  #   expect { account.deposit(1000) }.not_to raise_error
+  # end
+  # it 'can accept withdrawals' do
+  #   expect { account.withdraw(1000) }.not_to raise_error
+  # end
+  # it 'can print a statement' do
+  #   expect { account.print_statement }.not_to raise_error
+  # end
 
   describe '#deposit' do
     it 'adds amount to the account balance' do
@@ -34,13 +34,19 @@ describe Account do
 
   describe '#print_statement' do
     it 'prints the statement' do
-      date = Date.today.to_s
-      transaction_history = TransactionHistory.new
-      deposit = Transaction.new(date, 'deposit', 1000, 1000)
-      withdrawal = Transaction.new(date, 'withdrawal', 500, 500)
-      transaction_history.add_to_history(deposit)
-      transaction_history.add_to_history(withdrawal)
-      expect { account.print_statement }.to output("date || credit || debit || balance\n").to_stdout
+      date = Date.today
+      deposit1 = Transaction.new(date, 'deposit', 200, 200)
+      deposit2 = Transaction.new(date, 'deposit', 400, 600)
+      withdrawal = Transaction.new(date, 'withdrawal', 100, 500)
+      account.transaction_history.add_to_history(deposit1)
+      account.transaction_history.add_to_history(deposit2)
+      account.transaction_history.add_to_history(withdrawal)
+      expect { account.print_statement }.to output(
+        "date || credit || debit || balance
+#{withdrawal.date} || || 100 || 500
+#{withdrawal.date} || 400 || || 600
+#{withdrawal.date} || 200 || || 200\n"
+      ).to_stdout
     end
   end
 end
