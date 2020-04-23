@@ -1,21 +1,29 @@
-# Bank tech test
+## Bank
 
-Today, you'll practice doing a tech test.
+### How to setup
 
-For most tech tests, you'll essentially have unlimited time.  This practice session is about producing the best code you can when there is a minimal time pressure.
+- Install Ruby 2.7.1
+- Clone the git repository
+- Run bundle install
 
-You'll get to practice your OO design and TDD skills.
+### How to run the application
+- Run IRB shell from the lib folder of the project
+> `> require './account.rb'`</br>
+> `> account = Account.new`
 
-You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
+- Interact with the account through either deposit, withdraw or print_statement methods. e.g.</br>
+>`> account.deposit(100)`</br>
+`> account.withdraw(20)`</br>
+`> account.print_statement`
 
-## Specification
+### Screenshot of working application
 
-### Requirements
+![working app](./screenshot.png)
 
-* You should be able to interact with your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
-* Deposits, withdrawal.
-* Account statement (date, amount, balance) printing.
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
+
+### How to run the tests
+- Navigate to the root folder of the project
+- Run rspec
 
 ### Acceptance criteria
 
@@ -31,7 +39,3 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
-
-## Self-assessment
-
-Once you have completed the challenge and feel happy with your solution, here's a form to help you reflect on the quality of your code: https://docs.google.com/forms/d/1Q-NnqVObbGLDHxlvbUfeAC7yBCf3eCjTmz6GOqC9Aeo/edit
